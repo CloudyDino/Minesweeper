@@ -12,42 +12,21 @@ class Run {
         bombs = in.nextInt();
         System.out.println("\n\n");
 
-        Game minesweeper = new Game(length, width, bombs);
+        Game minesweeper = new ConsoleGame(length, width, bombs);
         while (!minesweeper.gameIsOver()) {
-            textShow(minesweeper.getShowingBoard());
+            minesweeper.showBoard();
             // Easiest to just type rowNumber *space* colNumber
             int nextRow = in.nextInt();
             int nextCol = in.nextInt();
             minesweeper.open(nextRow, nextCol);
         }
-        textShow(minesweeper.getShowingBoard());
+        in.close();
+        minesweeper.showBoard();
 
         if (minesweeper.gameWon()) {
             System.out.println("Congrats! You won!");
         } else {
             System.out.println("You lost, try again!");
         }
-    }
-
-    private static void textShow(String[][] gameBoard) {
-        System.out.print(" ");
-        for (int j = 0; j < gameBoard[0].length; j++) {
-            System.out.print("-");
-        }
-        System.out.println();
-
-        for (int i = 0; i < gameBoard.length; i++) {
-            System.out.print("|");
-            for (int j = 0; j < gameBoard[0].length; j++) {
-                System.out.print(gameBoard[i][j]);
-            }
-            System.out.println("|");
-        }
-        System.out.print(" ");
-        for (int j = 0; j < gameBoard[0].length; j++) {
-            System.out.print("-");
-        }
-        System.out.println();
-
     }
 }

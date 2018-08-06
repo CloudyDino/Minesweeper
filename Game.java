@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class Game {
+public abstract class Game {
 
     /*
         * # is closed
@@ -78,7 +78,9 @@ public class Game {
         }
     }
 
-    public String[][] getShowingBoard() {
+    public abstract void showBoard();
+
+    protected String[][] getShowingBoard() {
         String[][] showingBoard = new String[board.length][board[0].length];
         for (int r = 0; r < showingBoard.length; r++) {
             for (int c = 0; c < showingBoard[0].length; c++) {
